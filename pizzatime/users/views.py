@@ -1,4 +1,5 @@
 from argon2.exceptions import VerifyMismatchError
+from django.contrib.auth.views import LogoutView
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -6,6 +7,7 @@ from django.views.generic import *
 from .forms import *
 
 import argon2
+
 
 
 class RegPage(CreateView):
@@ -24,7 +26,7 @@ class RegPage(CreateView):
 
 class AuthPage(FormView):
     form_class = AuthForm
-    template_name = "users/auth.html"
+    template_name = "core/index.html"
     success_url = reverse_lazy("index")
 
     def __init__(self):
@@ -66,5 +68,5 @@ class AuthPage(FormView):
         return context
 
 
-def index(request):
-    return HttpResponse("index")
+class LogoutPage(LogoutView):
+    success_url_allowed_hosts = reverse_lazy("index")

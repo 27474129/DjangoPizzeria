@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <title>PizzaTime!</title>
+</head>
+<body>
+
+    <!-- <div class="btn">CLICK !</div> -->
+
+    <div class="mainPanel">
+
+        <div class="centering">
+            <div class="mainLogo">
+                <img src="{% static 'core/images/logo.png' %}" alt="">
+            </div>
+            <div class="innerFlexVam">
+                <div class="mainLocation">Укажите ваш адрес. . .</div>
+            </div>
+            <div class="innerFlexVam">
+                <div class="mainMenu">
+                    <div class="menuIconBurger"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="centering none">
+            <div class="mainLogo">
+                <img src="../img/logo.png" alt="">
+            </div>
+            <div class="innerFlexVam">
+                <div class="burgerChapters">
+                    <div class="pageMenu"><a href="#" id="couldGreen">Меню</a></div>
+                    <div class="pageBonus"><a href="#" id="couldGreen">Бонусы</a></div>
+                    <div class="pageContacts"><a href="#" id="couldGreen">Контакты</a></div>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{ error }}
+                        <!--input Номер телефона--><div>{{ form.phone }}</div>
+                        <!--input пароль--><div>{{ form.password }}</div>
+                        <button type="submit">Войти</button>
+                    </form>
+                </div>
+            </div>
+            <div class="innerFlexVam">
+                <div class="mainMenu">
+                    <div class="menuIconCross">&#9587;</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mainChapters">
+        <div class="pizzaChapter"></div>
+        <div class="drinkablesChapter"></div>
+    </div>
+
+    <div class="mainBlock">
+        <div class="mainProduct"></div>
+        <div class="mainBasket"></div>
+    </div>
+    <script src="{% static 'core/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'core/js/javascript.js' %}"></script>
+
+</body>
+</html>
