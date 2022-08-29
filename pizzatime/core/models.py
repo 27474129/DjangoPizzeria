@@ -49,3 +49,10 @@ class Cities(models.Model):
     class Meta:
         verbose_name = "Города"
         verbose_name_plural = "Города"
+
+
+
+class Deliveries(models.Model):
+    pass
+
+

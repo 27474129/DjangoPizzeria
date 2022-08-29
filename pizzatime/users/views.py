@@ -1,7 +1,7 @@
 from argon2.exceptions import VerifyMismatchError
 from django.contrib.auth.views import LogoutView
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import *
 from .forms import *
@@ -32,6 +32,7 @@ class AuthPage(FormView):
     def __init__(self):
         self.context = {}
 
+
     def post(self, request, *args, **kwargs):
         entered_phone = self.request.POST[ "phone" ]
 
@@ -47,7 +48,7 @@ class AuthPage(FormView):
                 password_hasher.verify(user[ 0 ].password, entered_password)
                 # 15 days
                 self.request.session.set_expiry(1296000)
-                self.request.session[ "user_id" ] = user[ 0 ].phone
+                self.request.session[ "user_id" ] = user[ 0 ].pk
                 return self.form_valid(form)
 
             except VerifyMismatchError:
@@ -69,4 +70,4 @@ class AuthPage(FormView):
 
 
 class LogoutPage(LogoutView):
-    success_url_allowed_hosts = reverse_lazy("index")
+    pass

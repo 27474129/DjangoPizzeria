@@ -2,8 +2,8 @@ from django import forms
 from .models import Users
 from .validators import *
 
-
 import argon2
+
 
 
 class RegForm(forms.ModelForm):
@@ -46,6 +46,3 @@ class RegForm(forms.ModelForm):
 class AuthForm(forms.Form):
     phone = forms.CharField(max_length=50, widget=forms.NumberInput)
     password = forms.CharField(max_length=50, widget=forms.PasswordInput)
-
-
-

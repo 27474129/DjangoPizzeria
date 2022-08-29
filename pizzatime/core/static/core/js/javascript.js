@@ -13,8 +13,5 @@ $(".mainMenu").click(function() {
         $(".pageMenu").children().toggleClass("grey")
         $(".pageMenu").children().attr("id", "couldntGreen")
     }
-
-
 })
-
 

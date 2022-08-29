@@ -1,6 +1,8 @@
 import re
 from .models import Users
 
+
+
 def validate_names(name, var_name, add_error):
     exceptions = []
     if (len(name) < 3):

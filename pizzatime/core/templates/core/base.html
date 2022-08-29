@@ -1,0 +1,73 @@
+{% load static %}
+{% load users_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+    <div class="mainPanel">
+        <div class="centering">
+            <div class="mainLogo">
+                <img src="{% static 'core/images/logo.png' %}" alt="">
+            </div>
+            <div class="innerFlexVam">
+                <div class="mainLocation">Укажите ваш адрес. . .</div>
+            </div>
+            <div class="innerFlexVam">
+                <div class="mainMenu">
+                    <div class="menuIconBurger"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="centering none">
+            <div class="mainLogo">
+                <img src="{% static 'core/images/logo.png' %}" alt="">
+            </div>
+            <div class="innerFlexVam">
+                <div class="burgerChapters">
+                    <!-- по дефолту меню должно быть выбрано как активная вкладка -->
+                    <div class="pageMenu"><a href="#" id="couldGreen">Меню</a></div>
+                    <div class="pageMenu"><a href="#" id="couldGreen">Акции</a></div>
+                    <div class="pageBonus"><a href="#" id="couldGreen">Бонусы</a></div>
+                    <div class="pageContacts"><a href="#" id="couldGreen">Контакты</a></div>
+                    {% if not request.session.keys and request.path != '/auth/' %}
+                        <div class="log_in-Btn"><a href="{% url 'auth' %}">ВХОД</a></div>
+                    {% elif request.session.keys and request.path != '/auth/' %}
+                        <div class="log_in-Btn"><a href="{% url 'logout' %}">ВЫЙТИ</a></div>
+                    {% endif %}
+                    {% if not request.session.keys and request.path == '/auth/' %}
+                        <form action="{% url 'auth' %}" method="post">
+                            {% csrf_token %}
+                            {{ error }}
+                            <div>{{ form.phone }}</div>
+                            <div>{{ form.password }}</div>
+                            <button type="submit">Войти</button>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="innerFlexVam">
+                <div class="mainMenu">
+                    <div class="menuIconCross">&#9587;</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mainChapters">
+        <div class="pizzaChapter"></div>
+        <div class="drinkablesChapter"></div>
+    </div>
+
+    <div class="mainBlock">
+        <div class="mainProduct"></div>
+        <div class="mainBasket"></div>
+    </div>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
