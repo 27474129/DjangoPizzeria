@@ -8,8 +8,5 @@ class AuthCheckingMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        if ("user_id" in request.session and request.path == reverse_lazy("auth")):
-            return redirect("index")
-
         response = self.get_response(request)
         return response

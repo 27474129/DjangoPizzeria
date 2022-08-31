@@ -148,3 +148,5 @@ INTERNAL_IPS = [
 
 
 LOGOUT_REDIRECT_URL = 'index'
+
+safe = False

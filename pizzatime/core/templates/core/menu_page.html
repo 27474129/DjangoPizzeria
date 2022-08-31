@@ -1,0 +1,116 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block head %}
+    {% block index_head %}
+    {% endblock %}
+{% endblock %}
+
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <div class="mainPanel">
+        <div class="centering">
+            <div class="mainLogo">
+                <img src="{% static 'core/images/logo.png' %}" alt="">
+            </div>
+            <div class="innerFlexVam">
+                <div class="mainLocation">Укажите ваш адрес. . .</div>
+            </div>
+            <div class="innerFlexVam">
+                <div class="mainMenu">
+                    <div class="menuIconBurger"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- товары -->
+        {% for product in products %}
+            <!-- div продукта -->
+            <div>
+                <div>{{ product.title }}</div>
+                <div>{{ product.description }}</div>
+                <div>{{ product.price }}</div>
+                <div>{{ product.image }}</div>
+                <div>{{ product.category }}</div>
+            </div>
+        {% endfor %}
+
+        <div class="centering none">
+            <div class="mainLogo">
+                <img src="{% static 'core/images/logo.png' %}" alt="">
+            </div>
+            <div class="innerFlexVam">
+                <div class="burgerChapters">
+                    <!-- по дефолту меню должно быть выбрано как активная вкладка -->
+                    <div class="pageMenu"><a href="#" id="couldGreen">Меню</a></div>
+                    <!--<div class="pageMenu"><a href="#" id="couldGreen">Акции</a></div>-->
+                    <div class="pageBonus"><a href="#" id="couldGreen">Бонусы</a></div>
+                    <div class="pageContacts"><a href="#" id="couldGreen">Контакты</a></div>
+                    <!-- если пользователь не авторизован -->
+                    {% if not request.session.keys and form_action == 'auth' %}
+                        <div class="log_in-Btn"><a href="{% url 'index' %}">ВХОД</a></div>
+                    {% elif request.session.keys %}
+                        <div class="log_in-Btn"><a href="{% url 'logout' %}">ВЫЙТИ</a></div>
+                    {% endif %}
+
+                    <!-- форма авторизации -->
+                    {% if form_action == 'auth' %}
+                        <form action="{% url 'auth' %}" method="post">
+                            {% csrf_token %}
+                            <div>{{ auth_error }}</div>
+                            <span>Phone: </span><div>{{ form.phone }}</div>
+                            <span>Password: </span><div>{{ form.password }}</div>
+                            <!-- ссылка ведущая на главную страницу с формой регистрации -->
+                            <a href="{% url 'index' %}?form=reg">Ещё нет аккаунта?</a>
+                            <button type="submit">Войти</button>
+                        </form>
+                    {% else %}
+                        <!-- форма регистрации -->
+                        <form action="{% url 'reg' %}" method="post">
+                            {% csrf_token %}
+                            {% for validation_error in validation_errors %}
+                                {{ validation_error }}
+                            {% endfor %}
+                            <span>First name: </span><div>{{ form.firstname }}</div>
+                            <span>Second name: </span><div>{{ form.secondname }}</div>
+                            <span>Phone: </span><div>{{ form.phone }}</div>
+                            <span>Password: </span><div>{{ form.password }}</div>
+                            <span>Password Repeat: </span><div>{{ form.password_repeat }}</div>
+                            <button type="submit">Регистрироваться</button>
+                            <!-- ссылка ведущая на главную страницу с формой авторизации -->
+                            <a href="{% url 'index' %}">Войти</a>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="innerFlexVam">
+                <div class="mainMenu">
+                    <div class="menuIconCross">&#9587;</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mainChapters">
+        <div class="pizzaChapter"></div>
+        <div class="drinkablesChapter"></div>
+    </div>
+
+    <div class="mainBlock">
+        <div class="mainProduct"></div>
+        <div class="mainBasket"></div>
+    </div>
+    {% block index_content %}
+    {% endblock %}
+
+{% endblock %}
+
+
+
+{% block footer %}
+{% endblock %}

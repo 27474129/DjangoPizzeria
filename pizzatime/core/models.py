@@ -1,6 +1,7 @@
 from django.db import models
 
 
+
 class Products(models.Model):
     title = models.CharField(max_length=70, verbose_name="Имя товара")
     price = models.IntegerField(verbose_name="Цена")
