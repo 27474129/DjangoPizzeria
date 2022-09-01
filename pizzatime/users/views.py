@@ -29,11 +29,14 @@ class Reg(View):
         if len(form_errors) != 0:
             return HttpResponseRedirect(f"{reverse_lazy('index')}?form=reg&form_errors={form_errors}")
 
+
+        password_hasher = argon2.PasswordHasher()
+        password_hash = password_hasher.hash(request.POST["password"])
         Users(
             firstname=request.POST[ "firstname" ],
             secondname=request.POST["secondname"],
             phone=request.POST["phone"],
-            password=request.POST["password"],
+            password=password_hash,
             bonuses=0,
         ).save()
         return HttpResponseRedirect(reverse_lazy("index"))
