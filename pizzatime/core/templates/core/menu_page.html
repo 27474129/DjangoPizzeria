@@ -44,50 +44,63 @@
             <div class="mainLogo">
                 <img src="{% static 'core/images/logo.png' %}" alt="">
             </div>
-            <div class="innerFlexVam">
                 <div class="burgerChapters">
-                    <!-- по дефолту меню должно быть выбрано как активная вкладка -->
-                    <div class="pageMenu"><a href="#" id="couldGreen">Меню</a></div>
-                    <!--<div class="pageMenu"><a href="#" id="couldGreen">Акции</a></div>-->
-                    <div class="pageBonus"><a href="#" id="couldGreen">Бонусы</a></div>
-                    <div class="pageContacts"><a href="#" id="couldGreen">Контакты</a></div>
-                    <!-- если пользователь не авторизован -->
-                    {% if not request.session.keys and form_action == 'auth' %}
-                        <div class="log_in-Btn"><a href="{% url 'index' %}">ВХОД</a></div>
-                    {% elif request.session.keys %}
-                        <div class="log_in-Btn"><a href="{% url 'logout' %}">ВЫЙТИ</a></div>
-                    {% endif %}
+                    <div class="burgerChaptersInner">
+                        <!-- по дефолту меню должно быть выбрано как активная вкладка -->
+                        <div class="pageMenu"><a href="#" id="couldGreen">Меню</a></div>
+                        <!--<div class="pageMenu"><a href="#" id="couldGreen">Акции</a></div>-->
+                        <div class="pageBonus"><a href="#" id="couldGreen">Бонусы</a></div>
+                        <div class="pageContacts"><a href="#" id="couldGreen">Контакты</a></div>
+
+                        <!-- если пользователь не авторизован -->
+                        {% if not request.session.keys and form_action == 'auth' %}
+                            <div class="log_in-Btn"><span href="{% url 'index' %}">ВХОД</span></div>
+                        {% elif request.session.keys %}
+                            <div class="log_in-Btn_exit-from-account"><a href="{% url 'logout' %}">ВЫЙТИ</a></div>
+                        {% endif %}
+                        {% if form_action == 'auth' %}
+                            <div class="log_in-form">
+                                <div class="log_in-IconCross">&#9587;</div>
+                                <form action="{% url 'auth' %}" method="post" id="log_in-form">
+                                    {% csrf_token %}
+                                    <div>{{ auth_error }}</div>
+                                    <span>Телефон: </span><div class="phoneNumber"><span class="plusSeven">+7</span>{{ form.phone }}</div>
+                                    <span>Пароль: </span><div>{{ form.password }}</div>
+                                    <!-- ссылка ведущая на главную страницу с формой регистрации -->
+                                    <a href="{% url 'index' %}?form=reg">Ещё нет аккаунта?</a>
+                                    <button type="submit" class="">Войти</button>
+                                </form>
+                            </div>
+
+                        {% else %}
+                            <!-- форма регистрации -->
+                            <div class="log_in-Btn"><span href="{% url 'index' %}">Регистрация</span></div>
+                            <div class="log_in-form">
+                                <div class="log_in-IconCross">&#9587;</div>
+                                <form action="{% url 'reg' %}" method="post">
+                                    {% csrf_token %}
+                                    {% for validation_error in validation_errors %}
+                                        {{ validation_error }}
+                                    {% endfor %}
+                                    <span>Имя: </span><div>{{ form.firstname }}</div>
+                                    <span>Фамилия: </span><div>{{ form.secondname }}</div>
+                                    <span>Телефон: </span><div class="phoneNumber"><span class="plusSeven">+7</span>{{ form.phone }}</div>
+                                    <span>Пароль: </span><div>{{ form.password }}</div>
+                                    <span>Повторите пароль: </span><div>{{ form.password_repeat }}</div>
+                                    <a href="{% url 'index' %}">Войти</a>
+                                    <button type="submit" class="">Зарегистрироваться</button>
+                                    <!-- ссылка ведущая на главную страницу с формой авторизации -->
+                                </form>
+                            </div>
+                        {% endif %}
+                        
+                    </div>
 
                     <!-- форма авторизации -->
-                    {% if form_action == 'auth' %}
-                        <form action="{% url 'auth' %}" method="post">
-                            {% csrf_token %}
-                            <div>{{ auth_error }}</div>
-                            <span>Phone: </span><div>{{ form.phone }}</div>
-                            <span>Password: </span><div>{{ form.password }}</div>
-                            <!-- ссылка ведущая на главную страницу с формой регистрации -->
-                            <a href="{% url 'index' %}?form=reg">Ещё нет аккаунта?</a>
-                            <button type="submit">Войти</button>
-                        </form>
-                    {% else %}
-                        <!-- форма регистрации -->
-                        <form action="{% url 'reg' %}" method="post">
-                            {% csrf_token %}
-                            {% for validation_error in validation_errors %}
-                                {{ validation_error }}
-                            {% endfor %}
-                            <span>First name: </span><div>{{ form.firstname }}</div>
-                            <span>Second name: </span><div>{{ form.secondname }}</div>
-                            <span>Phone: </span><div>{{ form.phone }}</div>
-                            <span>Password: </span><div>{{ form.password }}</div>
-                            <span>Password Repeat: </span><div>{{ form.password_repeat }}</div>
-                            <button type="submit">Регистрироваться</button>
-                            <!-- ссылка ведущая на главную страницу с формой авторизации -->
-                            <a href="{% url 'index' %}">Войти</a>
-                        </form>
-                    {% endif %}
+                    
+                    
+
                 </div>
-            </div>
             <div class="innerFlexVam">
                 <div class="mainMenu">
                     <div class="menuIconCross">&#9587;</div>
