@@ -66,6 +66,7 @@ class Auth(View):
             # 15 days
             request.session.set_expiry(1296000)
             request.session["user_id"] = user[0].pk
+            request.session[ "phone" ] = user[0].phone
             self.url = f"{reverse_lazy('index')}?is_auth=true"
 
         return HttpResponseRedirect(self.url)

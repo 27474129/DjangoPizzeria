@@ -56,12 +56,13 @@ class Cities(models.Model):
 
 
 class Orders(models.Model):
-    phone = models.IntegerField()
-    is_need_delivery = models.BooleanField()
+    phone = models.CharField(max_length=80)
     address = models.CharField(max_length=255)
-    apartment = models.IntegerField()
-    floor = models.IntegerField()
+    apartment = models.CharField(max_length=50)
+    floor = models.CharField(max_length=50)
     contactless = models.BooleanField()
-    price = models.IntegerField()
+    price = models.CharField(max_length=50)
     goods = models.TextField()
-
+    status = models.CharField(max_length=50)
+    paid = models.BooleanField()
+    is_delivery = models.BooleanField()

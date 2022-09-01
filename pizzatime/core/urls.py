@@ -3,5 +3,5 @@ from .views import *
 
 urlpatterns = [
     path("", IndexPage.as_view(), name="index"),
-    path("order/", Order.as_view(), name="order"),
+    path("order/", OrderPage.as_view(), name="order"),
 ]
