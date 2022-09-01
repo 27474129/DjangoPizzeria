@@ -1,2 +1,26 @@
 {% extends 'core/base.html' %}
 {% load static %}
+
+
+{% block head %}
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <span>Доставка: </span><div>{{ form.is_need_delivery }}</div>
+        <span>Адрес: </span><div>{{ form.address }}</div>
+        <span>Квартира: </span><div>{{ form.apartment }}</div>
+        <span>Этаж</span><div>{{ form.floor }}</div>
+        <span>Безконактная доставка: </span><div>{{ form.contactless }}</div>
+        <button type="submit">Заказать</button>
+    </form>
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}

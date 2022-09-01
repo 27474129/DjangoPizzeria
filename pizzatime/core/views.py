@@ -2,6 +2,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, FormView
 from users.forms import RegForm, AuthForm
 from .models import Products
+from .forms import OrderForm
 
 
 
@@ -56,5 +57,26 @@ class IndexPage(CreateView, ListView):
 
 
 
-class Order(FormView):
-    template_name = ""
+class Order(CreateView):
+    template_name = "core/order.html"
+    form_class = OrderForm
+    success_url = reverse_lazy("index")
+
+    def form_valid(self, form):
+        self.object = form.save()
+        return super().form_valid(form)
+
+
+    def post(self, request, *args, **kwargs):
+        """
+        Handle POST requests: instantiate a form instance with the passed
+        POST variables and then check if it's valid.
+        """
+        form = self.get_form()
+
+        form[ "phone" ] = 52
+
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)

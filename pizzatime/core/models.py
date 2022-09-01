@@ -53,7 +53,15 @@ class Cities(models.Model):
 
 
 
-class Deliveries(models.Model):
-    pass
 
+
+class Orders(models.Model):
+    phone = models.IntegerField()
+    is_need_delivery = models.BooleanField()
+    address = models.CharField(max_length=255)
+    apartment = models.IntegerField()
+    floor = models.IntegerField()
+    contactless = models.BooleanField()
+    price = models.IntegerField()
+    goods = models.TextField()
 
