@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block head %}
+{% endblock %}
+
+
+{% block header %}
+{% endblock %}
+
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.confirmation_code }}
+        <button type="submit">Отправить</button>
+    </form>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

@@ -25,3 +25,9 @@ class AuthForm(forms.ModelForm):
             "password" : forms.PasswordInput,
             "phone" : forms.NumberInput,
         }
+
+
+
+class ConfirmPhoneForm(forms.Form):
+    confirmation_code = forms.IntegerField()
+

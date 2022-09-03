@@ -66,3 +66,14 @@ class Orders(models.Model):
     status = models.CharField(max_length=50)
     paid = models.BooleanField()
     is_delivery = models.BooleanField()
+
+
+
+class Deliveries(models.Model):
+    firstname = models.CharField(max_length=70)
+    secondname = models.CharField(max_length=70)
+    phone = models.IntegerField()
+    status = models.CharField(max_length=70)
+    last_completed_order = models.DateTimeField(null=True)
+    card_number = models.CharField(max_length=70)
+    hours_worked = models.IntegerField()

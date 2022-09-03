@@ -10,12 +10,16 @@
 
 
 {% block content %}
-
-    <input type="radio" name="is_need_delivery">
+    <!-- способ получения -->
+    <button name="delivery">Delivery</button>
+    <button name="pickup">Pickup</button>
+    <!-- способ оплаты -->
+    <button name="Card">Card</button>
+    <button name="cash">Cash</button>
 
     <form action="" method="post">
         {% csrf_token %}
-
+        {{ form.as_p }}
 
         <button type="submit">Оплатить/заказать</button>
     </form>

@@ -10,7 +10,6 @@ class Validation:
         self.validation_errors += Validation.validate_phone(phone)
         self.validation_errors += Validation.validate_password(password)
 
-
         if (password != password_repeat):
             self.validation_errors += "Пароли не совпадают;"
 
