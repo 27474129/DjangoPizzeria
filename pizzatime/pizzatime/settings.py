@@ -38,6 +38,7 @@ INSTALLED_APPS = [
 
     "users.apps.UsersConfig",
     "core.apps.CoreConfig",
+    "api.apps.ApiConfig",
 ]
 
 MIDDLEWARE = [
@@ -84,7 +85,7 @@ LOGGING = {
         },
 
         "debug" : {
-            "level" : "INFO",
+            "level" : "DEBUG",
             "class" : "logging.StreamHandler",
             "formatter" : "general_format",
         },
@@ -98,7 +99,7 @@ LOGGING = {
         },
         "debug" : {
             "handlers" : ["debug"],
-            "level" : "INFO",
+            "level" : "DEBUG",
             "propodate" : True,
         },
     },

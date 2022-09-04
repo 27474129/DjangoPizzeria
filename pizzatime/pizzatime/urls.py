@@ -8,6 +8,7 @@ urlpatterns = [
     path('__debug__/', include('debug_toolbar.urls')),
     path("", include("users.urls")),
     path("", include("core.urls")),
+    path("api/v1/", include("api.urls")),
 ]
 
 
