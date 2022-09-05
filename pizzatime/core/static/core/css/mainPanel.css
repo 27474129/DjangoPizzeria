@@ -1,0 +1,318 @@
+/*-------------------------Обнуление-------------------------*/
+*{
+	padding: 0;
+	margin: 0;
+}
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+nav,footer,header,aside{display: block;}
+html,body{
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+input,button,textarea{font-family:inherit;}
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul, ol, li{list-style: none;}
+img{vertical-align: top;}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+/*-----------------------------------------------------------*/
+
+
+
+body {
+    font-family: 'Montserrat';
+}
+
+
+
+/*-------------------------------------------- Upper Panel --------------------------------------------*/
+
+.mainPanel {
+    width: 100%;
+    height: 100px;
+}
+
+
+.centering {
+    display: flex;
+    justify-content: space-between;
+    min-width: 1000px;
+    max-width: 700px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+
+.mainLogo {
+    height: 100%;
+}
+.mainLogo img {
+    height: 100%;
+}
+
+
+.innerFlexVam {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+
+.mainLocation {
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 100px;
+    border-radius: 30px;
+    background-color: #50A684;
+
+    transition: .15s;
+}
+.mainLocation:hover {
+    padding: 12px 115px;
+}
+
+
+.mainMenu {
+    width: 15px;
+    height: 15px;
+    margin: calc(85px / 2);
+}
+
+
+.menuIconBurger {
+    position: relative;
+  }
+.menuIconBurger:before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 3px;
+    width: 15px;
+    height: 0.15em;
+    background: grey;
+    box-shadow: 
+        0 0.25em 0 0 grey,
+        0 0.5em 0 0 grey;
+}
+.menuIconBurger:hover {
+    background: grey;
+    box-shadow: 
+        0 0.25em 0 0 grey,
+        0 0.5em 0 0 grey;
+}
+
+
+
+
+
+/* upper panel burger */
+
+.burgerChapters {
+    position: relative;
+    display: flex;
+    width: 100%;
+    align-items: end;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.burgerChapters div, .log_in-Btn span {
+    padding: 15px;
+    line-height: 16px;
+}
+
+.burgerChaptersInner {
+    display: flex;
+}
+
+
+
+.log_in-Btn {
+    transition: .3s ease-out;
+}
+
+.log_in-Btn span {
+    position: relative;
+    color: green;
+    margin-left: -15px;
+    background-color: #E1FAF4;
+    border-radius: 30px;
+    flex: 1 0 auto;
+    font-weight: bold;
+
+    transition: .3s;
+}
+.log_in-Btn span:hover {
+    color: grey;
+    background-color: #fff;
+}
+
+#couldGreen {
+    color: #000;
+    transition: .3s;
+}
+#couldGreen:hover {
+    color: green;
+}
+
+
+
+
+
+/* upper panel form*/
+
+.log_in-form {
+    position: absolute;
+    max-width: 270px;
+    max-height: 1000px;
+    top: 100px;
+    right: 0;
+
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px -5px black;
+}
+
+.log_in-IconCross {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 1;
+}
+
+
+
+.log_in-form form {
+    margin: 15px 15px 0px;
+}
+
+.log_in-form span {
+    display: block;
+    color: grey;
+}
+
+
+
+.log_in-form div:not(:first-child) {
+    position: relative;
+    padding: 0;
+    font-size: 14px;
+}
+
+
+
+.plusSeven {
+    position: absolute;
+    left: 0;
+    top: 4px;
+}
+
+
+
+.log_in-form a {
+    color: #598B77;
+    transition: .3s;
+}
+
+.log_in-form a:visited {
+    color: #598B77;
+}
+
+.log_in-form a:hover {
+    color: green;
+}
+
+
+
+.log_in-form input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid black;
+    margin: 0 0 30px;
+    padding: 5px;
+
+    transition: .3s;
+}
+
+
+
+.phoneNumber input {
+    padding: 5px 25px;
+}
+
+.phoneNumber span {
+    color: #000;
+}
+
+.log_in-form input:focus {
+    background-color: #F1F1F1;
+}
+
+
+
+.log_in-form button {
+    width: 100%;
+    display: block;
+    padding: 10px 15px;
+    color: #fff;
+    background-color: #50A684; /* #006D54 */
+    border: none;
+    border-radius: 45px;
+    margin: 30px auto 0;
+    font-weight: bold;
+    transform: scale(1.05);
+
+    transition: .3s;
+}
+
+.log_in-form button:hover {
+    transform: scale(1.1);
+}
+
+.log_in-form button:active {
+    transform: scale(1.05);
+}
+
+
+
+
+
+/* helping */
+
+.none {
+    display: none;
+}
+
+.grey {
+    color: grey;
+}
+
+.unselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+.border {
+    border: 1px solid black;
+}

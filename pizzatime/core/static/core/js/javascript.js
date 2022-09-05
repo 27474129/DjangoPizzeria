@@ -31,9 +31,9 @@ $(".mainMenu").click(function() {
     $(".log_in-Btn span").css("color", "").css("background", "")
 })
 
-// $(".mainMenu").on("click", function() {
-//     $(".pageMenu").children().toggleClass("grey").attr("id", "couldntGreen")
-// })
+
+
+
 
 /* массив для наполнения классов, которые не будут выделяться */
 
@@ -48,4 +48,18 @@ if (location.href == url + "?form=reg") {
     $(".centering").toggleClass("none")
     $(".log_in-form").fadeIn()
     $(".log_in-Btn span").css("color", "grey").css("background", "#fff")
+}
+
+
+
+/* add to busket */
+
+$(".mainProduct button").each(function(i, elem) {
+    $(elem).parent().attr("id", "product_" + i)
+    $(elem).attr("onclick", "add_to_basket($(this))")
+})
+
+function add_to_basket(attr) {
+    const inst = "#" + attr.parent().attr("id")
+    $(inst).children("div").clone().appendTo(".products-in-basket")
 }
