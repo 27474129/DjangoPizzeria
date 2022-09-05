@@ -39,7 +39,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 .mainBlock {
     position: relative;
     display: flex;
-    width: 70%;
+    width: 1000px;
     justify-content: space-between;
     margin: 0 auto;
 }

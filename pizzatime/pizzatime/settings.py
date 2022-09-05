@@ -136,9 +136,9 @@ WSGI_APPLICATION = 'pizzatime.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': "test",
+        'NAME': "django",
         "USER" : "postgres",
-        "PASSWORD" : "27474129",
+        "PASSWORD" : "12354",
         "HOST" : "localhost",
         "PORT" : "5432",
     }

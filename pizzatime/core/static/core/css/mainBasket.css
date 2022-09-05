@@ -47,6 +47,8 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     border-radius: 10px;
     transition: .3s;
     box-shadow: 0px 0px 10px 0px black;
+
+    margin-right: -200px;
 }
 
 .mainBasket:hover {
