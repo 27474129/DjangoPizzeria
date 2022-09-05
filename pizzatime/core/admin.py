@@ -20,5 +20,3 @@ class PointsAdmin(admin.ModelAdmin):
 
 admin.site.register(Products, ProductsAdmin)
 admin.site.register(ProductsCategories)
-admin.site.register(Points, PointsAdmin)
-admin.site.register(Cities)

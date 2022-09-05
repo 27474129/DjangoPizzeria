@@ -7,6 +7,7 @@ class Users(models.Model):
     phone = models.CharField(max_length=50, verbose_name="Телефон")
     password = models.TextField(verbose_name="Пароль")
     bonuses = models.IntegerField(default=0, verbose_name="Бонусы")
+    is_activated = models.BooleanField(default=False)
 
     def __str__(self):
         return self.phone
