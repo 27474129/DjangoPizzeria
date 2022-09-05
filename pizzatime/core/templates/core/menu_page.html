@@ -36,7 +36,8 @@
                 <div>{{ product.description }}</div>
                 <div>{{ product.price }}</div>
                 <div>{{ product.image }}</div>
-                <div>{{ product.category }}</div>
+                <!--<div>{{ product.category }}</div>-->
+                <button>В корзину</button>
             </div>
         {% endfor %}
 
@@ -54,7 +55,7 @@
 
                         <!-- если пользователь не авторизован -->
                         {% if not request.session.keys and form_action == 'auth' %}
-                            <div class="log_in-Btn"><span href="{% url 'index' %}">ВХОД</span></div>
+                            <div class="log_in-Btn"><span>ВХОД</span></div>
                         {% elif request.session.keys %}
                             <div class="log_in-Btn log_in-Btn_exit-from-account"><a href="{% url 'logout' %}"><span>ВЫЙТИ</span></a></div>
                         {% endif %}

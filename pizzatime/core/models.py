@@ -42,3 +42,4 @@ class Orders(models.Model):
     status = models.CharField(max_length=50)
     is_delivery = models.BooleanField()
     point_pk = models.IntegerField(default=0)
+    deliveryman = models.IntegerField(default=0)
