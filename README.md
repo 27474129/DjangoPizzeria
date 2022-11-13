@@ -1,12 +1,9 @@
-## For assemble project you need to do:
+Стек технологий: Python, Django, PostgreSQL  
 
+Процесс инсталяции:  
 
-Windows [7 - 10]
-1. python -m venv venv
-2. venv\Scripts\activate
-3. pip install -r /path/to/requirements.txt
+1. python3 -m venv venv  
+2. venv\bin\activate  
+3. pip3 install -r /path/to/requirements.txt  
 
-
-Working space: Nick: 
-#### pizzatime/anyapp/templates/anyapp
-#### pizzatime/anyapp/static/anyapp
+ПРОЕКТ НЕ ДОДЕЛАН, API удален.
